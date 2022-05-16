@@ -1,39 +1,40 @@
-package com.example.mvvmapp.main
+package com.example.mvvmapp.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.example.mvvmapp.R
-import com.example.mvvmapp.util.InjectorUtils
+import com.example.mvvmapp.viewmodel.AuthorsViewModel
 
 class AuthorActivity : AppCompatActivity() {
+
+    private val viewModel: AuthorsViewModel by viewModels()
+
     private lateinit var listAuthors: TextView
     private lateinit var btnBack: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_author)
-        initComponents()
+
+        initView()
+        initListener()
     }
 
-    private fun initComponents(){
+    private fun initView() {
         listAuthors = findViewById(R.id.txtAuthors)
         btnBack = findViewById(R.id.buttonBack)
+    }
 
-        val factory = InjectorUtils.provideAuthorViewModelFactory()
-        val viewModel = ViewModelProviders.of(this, factory).get(AuthorsViewModel::class.java)
-
-        viewModel.getAuthors().observe(this, Observer { authors ->
-            val stringBuilder = StringBuilder()
-            authors.forEach { author ->
-                stringBuilder.append("$author\n\n")
-            }
-            listAuthors.text = stringBuilder.toString()
-        })
-
+    private fun initListener() {
+        var text:String = ""
+        viewModel.getAuthors().forEach {
+            text += it.toString()
+        }
+        listAuthors.text = text
         btnBack.setOnClickListener {
             finish()
         }
