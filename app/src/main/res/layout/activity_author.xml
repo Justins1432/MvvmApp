@@ -8,25 +8,15 @@
     tools:context=".view.AuthorActivity">
 
 
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="64dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/buttonBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/txtAuthors"
-            android:layout_width="match_parent"
-            android:layout_height="610dp"
-            android:layout_margin="16dp"
-            android:text="Автор"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-    </ScrollView>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_view" />
 
 
     <Button

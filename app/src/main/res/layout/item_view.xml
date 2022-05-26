@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="10dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_light"
+        android:padding="6dp">
 
         <TextView
             android:id="@+id/txtTitle"
             android:layout_width="255dp"
             android:layout_height="35dp"
-            android:text="Title"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
             android:textSize="14sp"
-            android:textColor="@color/black" />
+            tools:text="Title" />
 
         <TextView
             android:id="@+id/txtAuthor"
             android:layout_width="255dp"
             android:layout_height="35dp"
             android:layout_marginTop="35dp"
-            android:text="Author"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
             android:textSize="14sp"
-            android:textColor="@color/black"/>
+            tools:text="Author" />
 
     </RelativeLayout>
 
